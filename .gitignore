@@ -1,3 +1,16 @@
+# grid search results and data
+*.csv
+# saved joblib pipelines
+*.joblib
+
+/tmp_playground
+/data_files
+
+# JetBrains
+.idea/
+
+.DS_Store
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
