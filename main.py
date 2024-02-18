@@ -2,9 +2,6 @@
 inference for a random test sample. """
 
 import json
-import warnings
-
-warnings.filterwarnings("ignore", category=DeprecationWarning)  # pyarrow dependency warning
 
 import pandas as pd
 from joblib import dump, load
@@ -16,8 +13,8 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import MaxAbsScaler
 from sklearn.svm import SVC
 
-from services import TextPreProcessor
 from services import MultiLabelOneHotEncoder, CustomOneHotEncoder
+from services import TextPreProcessor
 from utils import labels_to_binary, get_random_row_json_from_test_data, json_to_dataframe
 
 # To ensure that the test samples will not be part of the train samples
@@ -54,7 +51,7 @@ def build_model_from_data(data_filename: str = "data.csv", pipe_filename="pipeli
             ("preprocessor", preprocessor),
             ("encoder", encoder),
             ("scaler", MaxAbsScaler()),
-            ("classifier", SVC(C=0.5)),
+            ("classifier", SVC(C=0.2)),
         ]
     )
 
@@ -73,10 +70,8 @@ def build_model_from_data(data_filename: str = "data.csv", pipe_filename="pipeli
     return None
 
 
-# FUNCTION 2 : PREDICTION
-# Takes an input json object with a statement and the context metadata (no label) and predict if it's truth or not
 def predict_statement_truthfulness(statement_json, pipe_filename="pipeline.joblib") -> bool:
-    """Predict whether the input json statement is truthful or not with the trained model."""
+    """Predict whether the input json statement is truthful or not using the saved model (pipeline)."""
 
     x_test = json_to_dataframe(statement_json)
 
