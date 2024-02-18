@@ -2,7 +2,7 @@
 
 ### Welcome to my project
 
-It is my humble attempt to contribute in the detection and elimination of fake information while being creative, having fun, learning and expanding or brushing up my ML, NLP and coding skills.
+It is my humble attempt to contribute in the detection and elimination of fake information while being creative, having fun, learning and expanding or brushing up my ML, NLP and coding skills. 👩🏻‍💻
 
 This project is using the [LIAR Dataset](https://aclanthology.org/P17-2067/) and the goal is to build a classifier able to distinguish between facts and lies. Several techniques and algorithms are being explored in an effort to find the best combination of text preprocessing, feature engineering and vectorization techniques as well as classification algorithms.
 
@@ -70,7 +70,7 @@ To install this project and the dependencies you can use anaconda:
 
 
 
-To build a model and get a prediction on a random sample of the test data run the main method:
+To build a model and get a prediction on a random sample of the test data, run the main method:
 
 ```bash
   python main.py
