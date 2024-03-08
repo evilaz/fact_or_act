@@ -5,6 +5,7 @@ import random
 
 import numpy as np
 import pandas as pd
+from datasets import load_dataset
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFE
 from sklearn.model_selection import train_test_split
@@ -110,3 +111,11 @@ def get_unique_subjects(df):
     unique_subjects = set(subjects_flattened)
 
     return unique_subjects
+
+
+def download_datasets(dir_name="data_files"):
+    """Download the 3 datasets (train, test, split) to specified data directory."""
+
+    dataset = load_dataset("liar")
+    for subset in ["train", "test", "validation"]:
+        dataset[subset].to_csv(f"{dir_name}/{subset}.csv")
