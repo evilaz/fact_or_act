@@ -119,3 +119,41 @@ def download_datasets(dir_name="data_files"):
     dataset = load_dataset("liar")
     for subset in ["train", "test", "validation"]:
         dataset[subset].to_csv(f"{dir_name}/{subset}_ov.csv")  # ov: original version of dataset
+
+
+def decode_label(label: int) -> str:
+    """Decode numbered label to named label for readability."""
+
+    decode_map = {5: "pants-fire", 0: "false", 4: "barely-true", 1: "half-true", 2: "mostly-true", 3: "true"}
+
+    return decode_map[label]
+
+
+def format_datasets(data_dir="data_files"):
+    """Format the original datasets:
+        - remove the credit count columns
+        - decode labels (e.g. 2 -> 'mostly-true' see decode_label())
+        - format id.json->id and set as index
+    and write to csv files.
+    """
+
+    for dataset in ["train", "test", "validation"]:
+        df = pd.read_csv(f"{data_dir}/{dataset}_ov.csv")
+
+        df["id"] = df["id"].str.strip(".json")
+        df.set_index(keys="id", drop=True, inplace=True)
+
+        credit_counts_cols = [
+            "barely_true_counts",
+            "false_counts",
+            "half_true_counts",
+            "mostly_true_counts",
+            "pants_on_fire_counts",
+        ]
+        df.drop(columns=credit_counts_cols, inplace=True)
+
+        # Decode labels
+        df["label"] = df["label"].apply(decode_label)
+
+        # Write to new csv files
+        df.to_csv(f"{data_dir}/{dataset}.csv")
