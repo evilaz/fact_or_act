@@ -36,7 +36,7 @@ def labels_to_binary(label: str) -> bool:
 
 def perform_rfe(x_df, x_data, y_data, num_features=1, model=RandomForestClassifier()):
     """Runs RFE on a dataset using Logistic Regression to rank the features.
-    
+
     x_df is the dataset including feature names, x_data, y_data are the train data as arrays.
     """
 
@@ -118,4 +118,4 @@ def download_datasets(dir_name="data_files"):
 
     dataset = load_dataset("liar")
     for subset in ["train", "test", "validation"]:
-        dataset[subset].to_csv(f"{dir_name}/{subset}.csv")
+        dataset[subset].to_csv(f"{dir_name}/{subset}_ov.csv")  # ov: original version of dataset
