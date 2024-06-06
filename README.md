@@ -1,4 +1,4 @@
-# Fact or Act?
+# Fake News Detection
 
 ### Welcome to my project
 
@@ -84,10 +84,10 @@ In `main.py`, a model will be trained using a subset of the train data and the p
 
 ## Data & dataset
 
-This project is using the [LIAR Dataset](https://aclanthology.org/P17-2067/). The dataset is not pushed to github.
+This project is using the [LIAR Dataset](https://aclanthology.org/P17-2067/). The dataset is not pushed to GitHub.
 You can download it from the [official_url](https://www.cs.ucsb.edu/~william/data/liar_dataset.zip) in .tsv files. Alternatively you can get it through [Hugging Face](https://huggingface.co/datasets) using the [dataset](https://huggingface.co/docs/datasets/v1.5.0/loading_datasets.html#) library.
 
-The original dataset was slightly processed (e.g. replacing json.ids as id and later index) and the total credit history counts columns have been removed.
+The original dataset was slightly processed (e.g. replacing `json.ids` as id and later index) and the total credit history counts columns have been removed.
 Furthermore, for the time being, labels were turned to a binary classification (possibly to change).
 
 The data now looks like this: 
