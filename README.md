@@ -11,11 +11,11 @@ This project is using the [LIAR Dataset](https://aclanthology.org/P17-2067/) and
 ### More info:
 
 **Feature Engineering**:
-The idea so far is to treat different columns differently, with 'statement' being the main text feature. 
-- the `statement` column is the one that is more experimented with, as this the core part in question of validity. So different vectorizations have been explored and more to come.
-- for low cardinality columns like `subject` and `party_affiliation` so far one-hot encoding is applied, as both have been found to be important for the target.
-- the rest columns for now, are concatenated in a secondary '_rest context_' part of data and for now mostly vectorized with TFIDF
-- finally, and very importantly, some linguistic features are extracted from the `statement` and used as well in the feature space
+The idea so far is to treat different columns differently, with `statement` being the main text feature. 
+- The `statement` column is the one that is more experimented with, as this the core part in question of validity. So different vectorizations have been explored and more to come.
+- For low cardinality columns like `subject` and `party_affiliation` so far one-hot encoding is applied, as both have been found to be important for the target.
+- The rest columns for now, are concatenated in a secondary '_rest context_' part of data and for now mostly vectorized with TFIDF.
+- Finally, and very importantly, some linguistic features are extracted from the `statement` and used as well in the feature space.
 
 Some of the text vectorization techniques that have been explored so far:
 - TFIDF
